@@ -7,6 +7,7 @@ import 'package:learning_path_1/responsive/responsive_layout_screen.dart';
 import 'package:learning_path_1/responsive/web_screen_layout.dart';
 import 'package:learning_path_1/screens/login_screen.dart';
 import 'package:learning_path_1/utils/colors.dart';
+import 'package:learning_path_1/widgets/signup_screen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
       )
 
       */
-      home: LoginScreen(),
+      home: SignUpScreen(),
     );
   }
 }
