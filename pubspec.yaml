@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^3.4.1
   firebase_storage: ^10.3.1
   flutter_dotenv: ^5.0.2
+  flutter_svg: ^1.1.1+1
 
 dev_dependencies:
   flutter_test:
@@ -95,3 +96,4 @@ flutter:
 
   assets:
     - .env
+    - assets/ic_instagram.svg

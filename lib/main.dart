@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:learning_path_1/responsive/mobile_screen_layout.dart';
 import 'package:learning_path_1/responsive/responsive_layout_screen.dart';
 import 'package:learning_path_1/responsive/web_screen_layout.dart';
+import 'package:learning_path_1/screens/login_screen.dart';
 import 'package:learning_path_1/utils/colors.dart';
 
 Future main() async {
@@ -37,10 +38,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
       ),
+      /*
       home: const ResponsiveLayout(
         webScreenLayout: WebScreenLayout(),
         mobileScreenLayout: MobileScreenLayout(),
-      ),
+      )
+
+      */
+      home: LoginScreen(),
     );
   }
 }
