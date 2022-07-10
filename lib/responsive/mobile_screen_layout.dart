@@ -9,6 +9,10 @@ class MobileScreenLayout extends StatelessWidget{
       body: Center(
         child: Text('this is an mobile'),
       ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){},
+          child: Icon(Icons.add),
+      ),
     );
   }
 

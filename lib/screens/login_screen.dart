@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:learning_path_1/utils/colors.dart';
+import 'package:learning_path_1/widgets/signup_screen.dart';
 import 'package:learning_path_1/widgets/text_field_input.dart';
 
 import '../resources/auth_methods.dart';
@@ -38,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (res == 'success') {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(
-            builder: (context) => ResponsiveLayout(
+            builder: (context) => const ResponsiveLayout(
               mobileScreenLayout: MobileScreenLayout(),
               webScreenLayout: WebScreenLayout(),
             ),
@@ -96,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 24,
             ),
             InkWell(
-              onTap: () {},
+              onTap: loginUser,
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -125,7 +126,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text('Dont have an account?'),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: const Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold, ),),
@@ -136,6 +139,13 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
-    ));
+    ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.navigate_next),
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
+        },
+      ),
+    );
   }
 }

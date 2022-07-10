@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:learning_path_1/resources/auth_methods.dart';
+import 'package:learning_path_1/screens/login_screen.dart';
 import 'package:learning_path_1/utils/colors.dart';
 import 'package:learning_path_1/utils/utils.dart';
 import 'package:learning_path_1/widgets/text_field_input.dart';
@@ -24,6 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void dispose() {
+    super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _bioController.dispose();
@@ -44,6 +46,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         username: _usernameController.text,
         bio: _bioController.text,
         file: _image!);
+    print(res);
   }
 
   @override
@@ -150,7 +153,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: const Text('Dont have an account?'),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: const Text(
@@ -167,6 +172,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
       ),
-    ));
+    ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.navigate_before),
+        onPressed: (){
+          Navigator.pop(context);
+        },
+      ),
+    );
   }
 }

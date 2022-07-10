@@ -82,7 +82,9 @@ class AuthMethods {
           email: email,
           password: password,
         );
+
         res = "success";
+        print(res);
       } else {
         res = "Please enter all the fields";
       }
