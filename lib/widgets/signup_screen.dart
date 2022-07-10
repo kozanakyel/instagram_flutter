@@ -37,12 +37,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
   }
 
-  void signUpUser(){
-
+  void signUpUser() async {
+    String res = await AuthMethods().signUpUser(
+        email: _emailController.text,
+        password: _passwordController.text,
+        username: _usernameController.text,
+        bio: _bioController.text,
+        file: _image!);
   }
 
   @override
   Widget build(BuildContext context) {
+    bool _isLoading = false;
     return Scaffold(
         body: SafeArea(
       child: Container(
@@ -114,19 +120,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 24,
               ),
               InkWell(
-                onTap: () async {
-                  print('$_emailController $_bioController $_passwordController $_usernameController');
-                  String res = await AuthMethods().signUpUser(
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                      username: _passwordController.text,
-                      bio: _bioController.text,
-                      file: _image!,
-                  );
-
-
-                },
+                onTap: signUpUser,
                 child: Container(
+
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   alignment: Alignment.center,
@@ -136,7 +132,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.all(
                         Radius.circular(4),
                       ))),
-                  child: const Text('Sign Up'),
+                  child: _isLoading ? const Center(
+                    child: CircularProgressIndicator(
+                      color: primaryColor,
+                    ),
+                  ) : const Text('Sign Up'),
                 ),
               ),
               const SizedBox(
