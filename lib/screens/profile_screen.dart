@@ -27,9 +27,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     super.initState();
-    getData();
+    //getData();
   }
 
+  /*
   getData() async {
     setState(() {
       isLoading = true;
@@ -64,6 +65,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       isLoading = false;
     });
   }
+  * */
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +78,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
         title: Text(
-          userData['username'],
+          //userData['username']!,
+          'kullanici',
         ),
         centerTitle: false,
       ),
@@ -90,7 +94,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CircleAvatar(
                       backgroundColor: Colors.grey,
                       backgroundImage: NetworkImage(
-                        userData['photoUrl'],
+                        //userData['photoUrl']!,
+                        'https://images.unsplash.com/photo-1657479749839-b7b579a03d88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80',
                       ),
                       radius: 40,
                     ),
@@ -112,9 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             mainAxisAlignment:
                             MainAxisAlignment.spaceEvenly,
                             children: [
-                              FirebaseAuth.instance.currentUser!.uid ==
-                                  widget.uid
-                                  ? FollowButton(
+                               FollowButton(
                                 text: 'Sign Out',
                                 backgroundColor:
                                 mobileBackgroundColor,
@@ -131,45 +134,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   );
                                 },
                               )
-                                  : isFollowing
-                                  ? FollowButton(
-                                text: 'Unfollow',
-                                backgroundColor: Colors.white,
-                                textColor: Colors.black,
-                                borderColor: Colors.grey,
-                                function: () async {
-                                  await FireStoreMethods()
-                                      .followUser(
-                                    FirebaseAuth.instance
-                                        .currentUser!.uid,
-                                    userData['uid'],
-                                  );
-
-                                  setState(() {
-                                    isFollowing = false;
-                                    followers--;
-                                  });
-                                },
-                              )
-                                  : FollowButton(
-                                text: 'Follow',
-                                backgroundColor: Colors.blue,
-                                textColor: Colors.white,
-                                borderColor: Colors.blue,
-                                function: () async {
-                                  await FireStoreMethods()
-                                      .followUser(
-                                    FirebaseAuth.instance
-                                        .currentUser!.uid,
-                                    userData['uid'],
-                                  );
-
-                                  setState(() {
-                                    isFollowing = true;
-                                    followers++;
-                                  });
-                                },
-                              )
                             ],
                           ),
                         ],
@@ -183,7 +147,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     top: 15,
                   ),
                   child: Text(
-                    userData['username'],
+                    //userData['username'],
+                    'usernamaa',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -195,14 +160,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     top: 1,
                   ),
                   child: Text(
-                    userData['bio'],
+                    //userData['bio'],
+                    'userbio',
                   ),
                 ),
               ],
             ),
           ),
           const Divider(),
-          FutureBuilder(
+          /* FutureBuilder(
             future: FirebaseFirestore.instance
                 .collection('posts')
                 .where('uid', isEqualTo: widget.uid)
@@ -237,7 +203,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               );
             },
-          )
+          ) */
         ],
       ),
     );
